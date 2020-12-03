@@ -30,9 +30,9 @@ class Session(AccountActions):
                     print('=== Please come back later ===')
                     return False
 
-    def new_user_login(self, username, password):
-        self.username = username
-        self.password = password
+    def new_user_login(self, credentials):
+        self.username = credentials[0]
+        self.password = credentials[1]
         if self.is_valid_user(self.username, self.password):
             self.logged_in = True
             print(f'\n=== Hello {self.username} ===')

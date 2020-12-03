@@ -26,7 +26,7 @@ class AtmApp:
                             sys.exit(0)
                 elif main_menu_selection == '2':
                     creds = CreateAccount().new()
-                    session.new_user_login(creds[0], creds[1]).start_session()
+                    session.new_user_login(creds).start_session()
                 session.connection.close()
                 del session
 
