@@ -24,10 +24,11 @@ class DB:
         :param username: username as a string
         :return: True if username found in db records or False
         """
-        for record in self.get_all_data():
-            if record[0] == username:
-                return True
-        return False
+        try:
+            self.c.execute('SELECT username FROM accounts WHERE username = (?)', (username,)).fetchone()[0]
+            return True
+        except TypeError:
+            return False
 
     def insert_data_for_new_account(self, username, password, balance):
         self.c.execute('INSERT INTO accounts VALUES(?,?,?)', (username, password, balance))
