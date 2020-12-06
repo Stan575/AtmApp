@@ -18,8 +18,8 @@ class AtmApp:
             else:
                 session = Session()
                 if main_menu_selection == '1':
-                    while session.logged_in is not True:
-                        if session.user_login() is not False:
+                    while session.logged_in is False:
+                        if session.user_login() is True:
                             session.start_session()
                         else:
                             session.connection.close()
